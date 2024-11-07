@@ -1,9 +1,9 @@
 import React from 'react'
 
-const page = () => {
+const SubscriptionPage = () => {
   return (
     <div>subscription</div>
   )
 }
 
-export default page
+export default SubscriptionPage

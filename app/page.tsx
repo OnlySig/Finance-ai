@@ -1,6 +1,10 @@
+import { Button } from "./_components/ui/button"
+
 const Home = () => {
   return (
-    <div>Ola mundo</div>
+    <Button>
+      test legal
+    </Button>
   )
 }
 

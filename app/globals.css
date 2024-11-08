@@ -51,6 +51,7 @@ body {
     --primary: 102 59% 44%; /* Adjusted for #55B02E */
     --primary-foreground: 0 0 100% --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0 100%;
+    --primary-opacited: 102 50% 15%; /*#55b02ee5*/
     --muted: 0 0% 15%;
     --muted-foreground: 240 5% 64.9%;
     --accent: 12 6.5% 15.1%;

@@ -2,7 +2,7 @@
 
 import { db } from "@/app/_lib/prisma";
 import { auth } from "@clerk/nextjs/server";
-import { addTransactionSchema } from "./schema";
+import { upsertTransactionSchema } from "./schema";
 import {
   TransactionCategory,
   TransactionPaymentMethod,
@@ -10,24 +10,26 @@ import {
 } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
-interface AddTransactionProps {
+interface upsertTransactionProps {
   name: string;
   amount: number;
   type: TransactionType;
   category: TransactionCategory;
   paymentMethod: TransactionPaymentMethod;
   date: Date;
+  id?: string;
 }
 
-export const addTransaction = async (params: AddTransactionProps) => {
-  addTransactionSchema.parse(params);
+export const upsertTransaction = async (params: upsertTransactionProps) => {
+  upsertTransactionSchema.parse(params);
   const { userId } = await auth();
   if (!userId) throw new Error("Usuário não está logado!");
-  await db.transaction.create({
-    data: {
-      ...params,
-      userId,
+  await db.transaction.upsert({
+    where: {
+      id: params.id,
     },
+    update: { ...params, userId },
+    create: { ...params, userId },
   });
   revalidatePath("/transactions");
 };

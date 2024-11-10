@@ -47,7 +47,7 @@ const SummaryCards = async ({ month }: SummaryCards) => {
     <div className="space-y-6">
       <SummaryCard
         amount={balance}
-        icon={<WalletIcon size={16} />}
+        icon={<WalletIcon size={32} className="rounded-sm bg-[#100e0e] p-2" />}
         title="Saldo"
         size="large"
       />
@@ -55,17 +55,30 @@ const SummaryCards = async ({ month }: SummaryCards) => {
         <SummaryCard
           title="Investidos"
           amount={investmentsTd}
-          icon={<PiggyBank size={16} />}
+          icon={
+            <PiggyBank size={32} className="rounded-sm bg-[#ffffff1c] p-2" />
+          }
+          isInvestment
         />
         <SummaryCard
           title="Receita"
           amount={depositsTd}
-          icon={<TrendingUpIcon size={16} className="text-primary" />}
+          icon={
+            <TrendingUpIcon
+              size={32}
+              className="rounded-sm bg-primary-opacited p-2 text-primary"
+            />
+          }
         />
         <SummaryCard
           title="Despesas"
           amount={expensesTd}
-          icon={<TrendingDownIcon size={16} className="text-danger" />}
+          icon={
+            <TrendingDownIcon
+              size={32}
+              className="rounded-sm bg-danger bg-opacity-15 p-2 text-danger"
+            />
+          }
         />
       </div>
     </div>

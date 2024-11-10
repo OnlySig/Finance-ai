@@ -7,6 +7,7 @@ interface SummaryCardProps {
   title: string;
   amount: number;
   size?: "small" | "large";
+  isInvestment?: boolean;
 }
 
 const SummaryCard = ({
@@ -14,10 +15,13 @@ const SummaryCard = ({
   title,
   amount,
   size = "small",
+  isInvestment = false,
 }: SummaryCardProps) => {
   return (
     <>
-      <Card>
+      <Card
+        className={`${(size === "large" && "bg-[#161716]") || (isInvestment && "bg-[#141414]")}`}
+      >
         <CardHeader className="flex gap-2">
           <div className="flex items-center gap-2">
             {icon}

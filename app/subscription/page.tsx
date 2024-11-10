@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import NavBar from "../_components/navBar";
 
 const SubscriptionPage = () => {
   return (
-    <div>subscription</div>
-  )
-}
+    <>
+      <NavBar />
+    </>
+  );
+};
 
-export default SubscriptionPage
+export default SubscriptionPage;

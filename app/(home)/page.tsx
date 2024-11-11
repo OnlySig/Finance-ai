@@ -20,7 +20,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
   const { userId } = auth();
   if (!userId) redirect("/login");
   const monthIsInvalid = !month || !isMatch(month, "MM");
-  if (monthIsInvalid) redirect("/?month=01");
+  if (monthIsInvalid) redirect(`?month=${new Date().getMonth() + 1}`);
   const getDataDashboard = await getDashboard(month);
   return (
     <>

@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import actionUseUserId from "@/app/_hooks/actionUserId";
 
 const createStripeCheckout = async () => {
-  const userId = await actionUseUserId();
+  const { userId } = await actionUseUserId();
   if (!userId) throw new Error("Usuário não logado!");
   if (!process.env.STRIPE_SECRET_KEY)
     throw new Error("Stripe secret key not found.");

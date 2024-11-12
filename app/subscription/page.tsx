@@ -8,8 +8,9 @@ import actionUseUserId from "../_hooks/actionUserId";
 import AcquirePlanButton from "./_actions/_components/acquire-plan-button";
 
 const SubscriptionPage = async () => {
-  const userId = await actionUseUserId();
+  const { userId, user } = await actionUseUserId();
   if (!userId) redirect("/login");
+  const isProPlan = user.publicMetadata.subscriptionPlan === "pro";
   return (
     <>
       <NavBar />
@@ -19,7 +20,7 @@ const SubscriptionPage = async () => {
           <Card className="w-[450px] py-8">
             <CardHeader className="relative border-b border-solid text-center text-2xl font-semibold">
               <h2>Plano Básico</h2>
-              <Badge className="absolute">Atual</Badge>
+              {!isProPlan && <Badge className="absolute">Atual</Badge>}
               <div className="flex items-center justify-center gap-3">
                 <span className="text-4xl">R$</span>
                 <span className="text-6xl font-semibold">0</span>
@@ -40,6 +41,7 @@ const SubscriptionPage = async () => {
           <Card className="w-[450px] py-8">
             <CardHeader className="relative border-b border-solid text-center text-2xl font-semibold">
               <h2>Plano Pro</h2>
+              {isProPlan && <Badge className="absolute">Atual</Badge>}
               <div className="flex items-center justify-center gap-3">
                 <span className="text-4xl">R$</span>
                 <span className="text-6xl font-semibold">19</span>

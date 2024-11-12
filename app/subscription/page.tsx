@@ -6,11 +6,13 @@ import { CheckIcon, XIcon } from "lucide-react";
 import { Badge } from "../_components/ui/badge";
 import actionUseUserId from "../_hooks/actionUserId";
 import AcquirePlanButton from "./_actions/_components/acquire-plan-button";
+import getMonthTransactions from "../_data/get-count-transactions";
 
 const SubscriptionPage = async () => {
   const { userId, user } = await actionUseUserId();
   if (!userId) redirect("/login");
   const isProPlan = user.publicMetadata.subscriptionPlan === "pro";
+  const getMonth = await getMonthTransactions();
   return (
     <>
       <NavBar />
@@ -30,7 +32,15 @@ const SubscriptionPage = async () => {
             <CardContent className="flex flex-col justify-center space-y-6 py-8">
               <div className="flex items-center gap-2">
                 <CheckIcon className="text-primary" />
-                <p>Apenas 10 transações por mês (7/10)</p>
+                <p>
+                  Apenas 10 transações por mês (
+                  <span
+                    className={getMonth >= 10 ? "text-danger" : "text-primary"}
+                  >
+                    {getMonth}
+                  </span>
+                  /10)
+                </p>
               </div>
               <div className="flex items-center gap-2">
                 <XIcon />

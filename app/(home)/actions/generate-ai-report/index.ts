@@ -13,7 +13,7 @@ const generateAiReport = async ({ month }: GenerateAiReportSchema) => {
   generateAiReportSchema.parse({ month });
   const { userId, user } = await actionUseUserId();
   const isProPlan = user.publicMetadata.subscriptionPlan === "pro";
-  if (!process.env.OPENIA_SECRET_KEY) {
+  if (!process.env.OPENAI_SECRET_KEY) {
     await new Promise((resolve) => setTimeout(resolve, 3000));
     return DUMMY_REPORT;
   }

@@ -8,7 +8,7 @@ interface EdiTtransactionButtonProps {
   transaction: Transaction;
 }
 
-const EdiTtransactionButton = ({ transaction }: EdiTtransactionButtonProps) => {
+const EditTransactionButton = ({ transaction }: EdiTtransactionButtonProps) => {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
@@ -34,4 +34,4 @@ const EdiTtransactionButton = ({ transaction }: EdiTtransactionButtonProps) => {
   );
 };
 
-export default EdiTtransactionButton;
+export default EditTransactionButton;

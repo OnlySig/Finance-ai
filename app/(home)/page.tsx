@@ -8,7 +8,7 @@ import getDashboard from "../_data/get-dashboard";
 import ExpensesPerCategory from "./_components/expenses-per-category";
 import LastTransactions from "./_components/last-transactions";
 import actionUserId from "../_hooks/actionUserId";
-//import NavBar from "./_components/navBar";
+import AiReportButton from "./_components/ai-report-button";
 
 interface HomeProps {
   searchParams: {
@@ -28,7 +28,10 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
       <section className="px-6 py-8">
         <div className="mb-7 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Dashboard</h1>
-          <TimeSelect />
+          <div className="flex items-center gap-3">
+            <AiReportButton month={month} />
+            <TimeSelect />
+          </div>
         </div>
         <div className="grid grid-cols-[2fr,1fr] gap-6">
           <div className="flex flex-col gap-6">

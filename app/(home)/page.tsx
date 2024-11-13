@@ -17,11 +17,12 @@ interface HomeProps {
 }
 
 const Home = async ({ searchParams: { month } }: HomeProps) => {
-  const { userId } = await actionUserId();
+  const { userId, user } = await actionUserId();
   if (!userId) redirect("/login");
   const monthIsInvalid = !month || !isMatch(month, "MM");
   if (monthIsInvalid) redirect(`?month=${new Date().getMonth() + 1}`);
   const getDataDashboard = await getDashboard(month);
+  const isProPlan = user.publicMetadata.subscriptionPlan === "pro";
   return (
     <>
       <NavBar />
@@ -29,7 +30,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
         <div className="mb-7 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <div className="flex items-center gap-3">
-            <AiReportButton month={month} />
+            <AiReportButton month={month} isPro={isProPlan} />
             <TimeSelect />
           </div>
         </div>

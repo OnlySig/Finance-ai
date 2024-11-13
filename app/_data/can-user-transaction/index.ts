@@ -6,7 +6,6 @@ const canUserTransaction = async () => {
   if (user.publicMetadata.subscriptionPlan === "pro") return true;
   const getMonth = await getMonthTransactions();
   if (getMonth >= 10) return false;
-  console.log(getMonth);
   return true;
 };
 

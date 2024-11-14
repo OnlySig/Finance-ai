@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/app/_components/ui/dialog";
+import { toast } from "sonner";
 
 interface DeletTransactionDialogProps {
   isDialogOpen: boolean;
@@ -26,8 +27,9 @@ const DeletTransactionDialog = ({
     try {
       await deleteTransaction(id);
       setIsDialogOpen(false);
+      toast.success("Transação deletada com sucesso!");
     } catch (error) {
-      console.error(error);
+      toast.error(`Não foi possível deletar a transação, erro: ${error}`);
     }
   };
   return (

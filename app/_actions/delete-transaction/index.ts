@@ -10,6 +10,7 @@ const deleteTransaction = async (id: string) => {
     },
   });
   revalidatePath("/transactions");
+  revalidatePath("/");
 };
 
 export default deleteTransaction;
